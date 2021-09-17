@@ -22,7 +22,7 @@ export default function Menu() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/dashbord" className="nav-link active">
+              <Link to="/dashboard" className="nav-link active">
                 Dashboard
               </Link>
             </li>

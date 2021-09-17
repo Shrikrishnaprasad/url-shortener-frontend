@@ -115,40 +115,44 @@ export default function Url() {
           </div>
         </div>
         <div className="row">
-          {allUrls.map((url) => (
-            <div className="col-md-4 col-sm-6 col-xs-12">
-              <div
-                className="card text-dark bg-light mb-3"
-                style={{ maxWidth: "18rem" }}
-              >
-                <div className="card-header">
-                  Total clicks : {url.clickCount}
-                </div>
-                <div className="card-body">
-                  <h6 className="card-title">
-                    <p
-                      className="text-success"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => onShortUrlClick(url.shortUrl)}
-                    >
-                      <b className="text-dark">Short-Url : </b>
-                      http://localhost:5000/{url.shortUrl}
+          {!allUrls.length ? (
+            <h2>Loading...</h2>
+          ) : (
+            allUrls.map((url) => (
+              <div className="col-md-4 col-sm-6 col-xs-12">
+                <div
+                  className="card text-dark bg-light mb-3"
+                  style={{ maxWidth: "18rem" }}
+                >
+                  <div className="card-header">
+                    Total clicks : {url.clickCount}
+                  </div>
+                  <div className="card-body">
+                    <h6 className="card-title">
+                      <p
+                        className="text-success"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => onShortUrlClick(url.shortUrl)}
+                      >
+                        <b className="text-dark">Short-Url : </b>
+                        http://localhost:5000/{url.shortUrl}
+                      </p>
+                    </h6>
+                    <p className="card-text">
+                      <b className="text-dark">Long-Url : </b>
+                      {url.longUrl}
                     </p>
-                  </h6>
-                  <p className="card-text">
-                    <b className="text-dark">Long-Url : </b>
-                    {url.longUrl}
-                  </p>
-                  <a
-                    href={`url/delete/${url._id}`}
-                    className="btn btn-sm btn-danger"
-                  >
-                    Delete
-                  </a>
+                    <a
+                      href={`url/delete/${url._id}`}
+                      className="btn btn-sm btn-danger"
+                    >
+                      Delete
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </>

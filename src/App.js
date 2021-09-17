@@ -14,6 +14,7 @@ import RestLink from "./ResetLink";
 import Signup from "./Signup";
 import "./styles.css";
 import Url from "./Url";
+import Dashboard from "./Dashboard";
 
 export default function App() {
   const history = useHistory();
@@ -31,6 +32,10 @@ export default function App() {
           <Route path="/url">
             <Menu />
             <Url />
+          </Route>
+          <Route path="/dashboard">
+            <Menu />
+            <Dashboard />
           </Route>
           <Route path="/reset">
             <RestLink />
