@@ -15,13 +15,13 @@ import Signup from "./Signup";
 import "./styles.css";
 import Url from "./Url";
 import Dashboard from "./Dashboard";
+import Activation from "./Activation";
 
 export default function App() {
   const history = useHistory();
   return (
     <>
       <Router>
-        <Menu />
         <Switch>
           <Route exact path="/">
             <Signup />
@@ -29,9 +29,12 @@ export default function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/url">
+          <Route exact path="/url">
             <Menu />
             <Url />
+          </Route>
+          <Route path="/activation/:token">
+            <Activation />
           </Route>
           <Route path="/dashboard">
             <Menu />

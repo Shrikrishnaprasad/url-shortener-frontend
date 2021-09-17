@@ -11,7 +11,7 @@ export default function RestLink() {
       let headersList = {
         "Content-Type": "application/json"
       };
-      fetch("https://password-reset-email.herokuapp.com/auth/reset-password", {
+      fetch("http://localhost:5000/auth/reset-password", {
         method: "POST",
         body: JSON.stringify({ email }),
         headers: headersList

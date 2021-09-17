@@ -11,7 +11,7 @@ export default function Login() {
       let headersList = {
         "Content-Type": "application/json"
       };
-      fetch("https://password-reset-email.herokuapp.com/auth/login", {
+      fetch("http://localhost:5000/auth/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers: headersList

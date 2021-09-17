@@ -29,14 +29,18 @@ export default function Dashboard() {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
+        //console.log(data);
         const urlList = data.sort(function (a, b) {
           return a._id - b._id;
         });
         urlList.map((item) =>
           setUrlCount((prev) => [
             ...prev,
-            { name: MONTHS[item._id - 1], "New Url": item.total }
+            {
+              name: MONTHS[item._id - 1],
+              "New Url": item.total,
+              count: item.total
+            }
           ])
         );
       })

@@ -12,7 +12,7 @@ export default function NewPassword() {
       let headersList = {
         "Content-Type": "application/json"
       };
-      fetch("https://password-reset-email.herokuapp.com/auth/new-password", {
+      fetch("http://localhost:5000/auth/new-password", {
         method: "POST",
         body: JSON.stringify({ password: password, token: restToken }),
         headers: headersList

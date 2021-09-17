@@ -5,31 +5,40 @@ import "./styles.css";
 export default function Signup() {
   const history = useHistory();
 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = () => {
-    if (username && email && password) {
+    if (username && email && password && firstName) {
       let headersList = {
         "Content-Type": "application/json"
       };
-      fetch("https://password-reset-email.herokuapp.com/auth/register", {
+      fetch("http://localhost:5000/auth/register", {
         method: "POST",
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+          firstName,
+          lastName
+        }),
         headers: headersList
       })
         .then(function (response) {
           return response.json();
         })
         .then(function (data) {
-          if (data.username) {
-            alert("Hi " + data.username + " !! You are signed in ");
-            history.push("/login");
-          } else if (data.keyValue.username) {
-            console.log(data.keyValue.username);
-            alert("User already exists");
+          if (data.message) {
+            alert(data.message);
+            setFirstName("");
+            setLastName("");
+            setUsername("");
+            setEmail("");
+            setPassword("");
           } else {
-            console.log(data);
+            //console.log(data);
             alert(data.error);
           }
         })
@@ -81,6 +90,26 @@ export default function Signup() {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </div>
+                    <br />
+                    <div className="input-group">
+                      <input
+                        placeholder="First name"
+                        className="form-control"
+                        type="text"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                      />
+                    </div>
+                    <br />
+                    <div className="input-group">
+                      <input
+                        placeholder="Last name"
+                        className="form-control"
+                        type="text"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
                       />
                     </div>
                   </div>
