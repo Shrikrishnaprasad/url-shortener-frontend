@@ -7,44 +7,30 @@ import {
   useHistory
 } from "react-router-dom";
 
+import Menu from "./Menu";
 import Login from "./Login";
 import NewPassword from "./NewPassword";
 import RestLink from "./ResetLink";
 import Signup from "./Signup";
 import "./styles.css";
+import Url from "./Url";
 
 export default function App() {
   const history = useHistory();
   return (
     <>
       <Router>
-        <nav className="navbar navbar-expand navbar-dark bg-primary">
-          <div className="collapse navbar-collapse" id="navbarText">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item ">
-                <Link to="/" className="nav-link active">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/" className="nav-link active">
-                  Urls
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/" className="nav-link active">
-                  Dashboard
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <Menu />
         <Switch>
           <Route exact path="/">
             <Signup />
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/url">
+            <Menu />
+            <Url />
           </Route>
           <Route path="/reset">
             <RestLink />

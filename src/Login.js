@@ -22,7 +22,7 @@ export default function Login() {
         .then(function (data) {
           if (data.username) {
             alert("Hi " + data.username + " !! You are logged in ");
-            history.push("/");
+            history.push("/url");
           } else {
             alert(data);
           }
