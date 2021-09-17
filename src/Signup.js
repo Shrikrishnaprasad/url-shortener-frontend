@@ -11,7 +11,9 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = () => {
-    if (username && email && password && firstName) {
+    if (!email.includes("@") || !email.includes(".") || email.length < 8) {
+      alert("Email is not valid");
+    } else if (username && email && password && firstName) {
       let headersList = {
         "Content-Type": "application/json"
       };

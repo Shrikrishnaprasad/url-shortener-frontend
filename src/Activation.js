@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 export default function Activation() {
@@ -8,25 +8,27 @@ export default function Activation() {
   let headersList = {
     "Content-Type": "application/json"
   };
-  fetch("http://localhost:5000/auth/activation", {
-    method: "POST",
-    body: JSON.stringify({ token }),
-    headers: headersList
-  })
-    .then(function (response) {
-      return response.json();
+  useEffect(() => {
+    fetch("http://localhost:5000/auth/activation", {
+      method: "POST",
+      body: JSON.stringify({ token }),
+      headers: headersList
     })
-    .then(function (data) {
-      if (data.message) {
-        alert(data.message);
-        //history.push("/url");
-        setLoading(false);
-      } else {
-        alert(data.error);
-        history.push("/");
-      }
-    })
-    .catch((err) => console.log(err));
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        if (data.message) {
+          alert(data.message);
+          //history.push("/url");
+          setLoading(false);
+        } else {
+          alert(data.error);
+          history.push("/");
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div className="container mx-auto card p-4 mt-4">
       {loading ? (
