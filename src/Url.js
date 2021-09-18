@@ -18,7 +18,7 @@ export default function Url() {
     };
 
     // getting all the mentors
-    fetch("http://localhost:5000/url/", {
+    fetch("https://url-shortener-link.herokuapp.com/url/", {
       method: "GET",
       headers: headersList
     })
@@ -33,7 +33,7 @@ export default function Url() {
   }, [isClick]);
 
   const onShortUrlClick = (shortUrl) => {
-    fetch(`http://localhost:5000/url/shortUrl/${shortUrl}`, {
+    fetch(`https://url-shortener-link.herokuapp.com/url/shortUrl/${shortUrl}`, {
       method: "GET"
     })
       .then(function (response) {
@@ -60,7 +60,7 @@ export default function Url() {
       Accept: "*/*",
       "Content-Type": "application/json"
     };
-    fetch(`http://localhost:5000/url/create`, {
+    fetch(`https://url-shortener-link.herokuapp.com/url/create`, {
       method: "POST",
       body: JSON.stringify({
         longUrl: longUrl
@@ -135,7 +135,7 @@ export default function Url() {
                         onClick={() => onShortUrlClick(url.shortUrl)}
                       >
                         <b className="text-dark">Short-Url : </b>
-                        http://localhost:5000/{url.shortUrl}
+                        https://url-shortener-link.herokuapp.com/{url.shortUrl}
                       </p>
                     </h6>
                     <p className="card-text">

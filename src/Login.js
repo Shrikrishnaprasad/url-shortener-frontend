@@ -11,7 +11,7 @@ export default function Login() {
       let headersList = {
         "Content-Type": "application/json"
       };
-      fetch("http://localhost:5000/auth/login", {
+      fetch("https://url-shortener-link.herokuapp.com/auth/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers: headersList

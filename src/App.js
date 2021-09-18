@@ -16,6 +16,7 @@ import "./styles.css";
 import Url from "./Url";
 import Dashboard from "./Dashboard";
 import Activation from "./Activation";
+import PageNotFound from "./PageNotFound";
 
 export default function App() {
   const history = useHistory();
@@ -45,6 +46,9 @@ export default function App() {
           </Route>
           <Route path="/new-password/:restToken">
             <NewPassword />
+          </Route>
+          <Route exact path="/*">
+            <PageNotFound />
           </Route>
         </Switch>
       </Router>

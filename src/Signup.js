@@ -17,7 +17,7 @@ export default function Signup() {
       let headersList = {
         "Content-Type": "application/json"
       };
-      fetch("http://localhost:5000/auth/register", {
+      fetch("https://url-shortener-link.herokuapp.com/auth/register", {
         method: "POST",
         body: JSON.stringify({
           username,

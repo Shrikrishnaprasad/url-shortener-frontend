@@ -22,7 +22,7 @@ export default function Dashboard() {
 
   const [urlCount, setUrlCount] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/url/urlCount`, {
+    fetch(`https://url-shortener-link.herokuapp.com/url/urlCount`, {
       method: "GET"
     })
       .then(function (response) {

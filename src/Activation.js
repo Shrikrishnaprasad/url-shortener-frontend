@@ -9,7 +9,7 @@ export default function Activation() {
     "Content-Type": "application/json"
   };
   useEffect(() => {
-    fetch("http://localhost:5000/auth/activation", {
+    fetch("https://url-shortener-link.herokuapp.com/auth/activation", {
       method: "POST",
       body: JSON.stringify({ token }),
       headers: headersList
