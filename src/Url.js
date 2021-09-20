@@ -81,6 +81,21 @@ export default function Url() {
       })
       .catch((e) => console.log(e));
   }
+  const deleteUrl = (id) => {
+    fetch(`https://url-shortener-link.herokuapp.com/url/delete/${id}`, {
+      method: "GET"
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        alert(data.message);
+        setIsClick(!isClick);
+        //setAllUrls(data);
+      })
+      .catch((e) => console.log(e));
+  };
 
   return (
     <>
@@ -135,19 +150,20 @@ export default function Url() {
                         onClick={() => onShortUrlClick(url.shortUrl)}
                       >
                         <b className="text-dark">Short-Url : </b>
-                        https://url-shortener-link.herokuapp.com/{url.shortUrl}
+                        https://{url.shortUrl}
                       </p>
                     </h6>
                     <p className="card-text">
                       <b className="text-dark">Long-Url : </b>
                       {url.longUrl}
                     </p>
-                    <a
-                      href={`url/delete/${url._id}`}
+                    <button
+                      type="button"
+                      onClick={() => deleteUrl(url._id)}
                       className="btn btn-sm btn-danger"
                     >
                       Delete
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
